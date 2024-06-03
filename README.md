@@ -1,2 +1,2 @@
-# ScalaL
-Topics of Sala
+# Scala-Learning
+Topics of Sacla
