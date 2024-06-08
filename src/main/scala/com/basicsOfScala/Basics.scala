@@ -1,7 +1,8 @@
 package com.basicsOfScala
 
-object Basics  extends App { //extends to app to make code runnable
+object Basics  extends App { //extends to app to make code runnable as standalone
   private val age: Int = 25 // similar to declaring the Const value in CPP with val in scala.  const int msg = 25;
+  //age = 26  throws an error 'reassignment to val' is illegal
   println(s"age is $age")
 
   //  Other data types can be  Int, String, Boolean  and optional to specify data type
@@ -12,7 +13,7 @@ object Basics  extends App { //extends to app to make code runnable
   val str1 = "I love Scala"
   println(str1)
   println("statement can be : " + str1) // string can be concatenated with another, using '+'
-  println(s"Statement can be : $str1") //Referencing string  with var reference
+  println(s"Statement can be : $str1") //Referencing string  with var reference - 'Interpolation of strings  with s"" '
 
   //assigning expression results to variables
   var add = 2 + age
@@ -20,7 +21,7 @@ object Basics  extends App { //extends to app to make code runnable
 
   //  Conditional statements
   private var ag = ""
-  ag = if (age > 20) "Adult" else "Child"
+  ag = if (age > 20) "Adult" else "Child"  //assigning  result of if expression to ag variable
   println(ag)
 
   private val ag1 = { // Conditional Chaining
