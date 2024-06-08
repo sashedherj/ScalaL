@@ -9,6 +9,9 @@ out/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/.name
+.idea/scala_compiler.xml
+.idea/workspace.xml
 *.iws
 *.iml
 *.ipr
@@ -37,3 +40,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### buildServerProtocal
+.bsp

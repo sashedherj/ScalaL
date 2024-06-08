@@ -1,6 +1,8 @@
 package com.basicsOfScala
 
 object Basics  extends App { //extends to app to make code runnable as standalone
+  //every thing in scala are expressions
+
   private val age: Int = 25 // similar to declaring the Const value in CPP with val in scala.  const int msg = 25;
   //age = 26  throws an error 'reassignment to val' is illegal
   println(s"age is $age")
@@ -32,19 +34,19 @@ object Basics  extends App { //extends to app to make code runnable as standalon
   }
   println(s"var output from conditional chaining is $ag1")
 
-  //  Code Blocks
+  //  Code Blocks - are notable expressions in scala
   val codeBlock1 = {
-    //we can declare functions or variable with in code blocs
+    //we can declare functions or variable with in code blocks
     val x: Int = 24
     println("value of x in code block is " + x)
     x + 2
-    //    x+2 will be the last value assigned to codeBlock1
+    //    x+2 will be the last value assigned to entire codeBlock1
   }
 
   println(s"value of code block is $codeBlock1")
 
 
-  //Functions in Scala
+  //Functions in Scala - Scala the functional programming language
   private def basicFunction(x1: Int): Int = {
     val y: Int = 20
     x1 + y
@@ -53,7 +55,7 @@ object Basics  extends App { //extends to app to make code runnable as standalon
   var y = basicFunction(3)
   println(s"value of y after function call is $y")
 
-  //  Recurrsive functions
+  //  Recursive functions - remember  looping is heavily discouraged in scala think in terms of functions and recursive functions
   def factorial(num: Int): Int = {
     if (num == 1) 1
     else num * factorial(num - 1)
@@ -62,7 +64,7 @@ object Basics  extends App { //extends to app to make code runnable as standalon
   var num = 5
   println(s"factorial of $num  is  " + factorial(num))
 
-  println(println("x+y= z"), println("x= z-y")) // println returns nothing void in other lang, in scala they return unit
+  println(println("x+y= z"), println("x= z-y")) // println returns nothing void in other lang, in scala they return unit type
 
   //  define funtion that returns unit
   def demoReturnsUnit(): Unit = {
