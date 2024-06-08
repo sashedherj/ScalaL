@@ -12,6 +12,7 @@ out/
 .idea/.name
 .idea/scala_compiler.xml
 .idea/workspace.xml
+.idea/inspectionProfiles
 *.iws
 *.iml
 *.ipr
