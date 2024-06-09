@@ -64,7 +64,7 @@ object AdvancedTopics extends  App {
   // Implicts basics
   // 1. Implicit arguments
   def amethodtakesimplictargs(implicit arg:Int) = arg +1
-  implicit  val avar = 46
+  implicit  val avar: Int = 46
   print(amethodtakesimplictargs)  // similar to amethodtakesimplictargs(avar) by default it takes the  implicit variable
 
   // 2. Implicit Conversion

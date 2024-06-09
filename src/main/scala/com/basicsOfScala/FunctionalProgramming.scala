@@ -18,13 +18,13 @@ object FunctionalProgramming extends  App {
     override def apply(arg1:Int) :Int =  arg1 +1
   }
   // valueIncrementer.apply(20) //  valueIncrementer.apply(20) is same as valueIncrementer(20)
-  println(valueIncrementer(20))
+  print(valueIncrementer(20))
 
   // stringConcatenator function2 takes 2 strings and return 1 string
   val stringConcatenator = new ((String,String) => String){
     override def apply(v1: String, v2: String): String = v1 + v2
   }
-  println(stringConcatenator("I Love"," Scala"))
+  print(stringConcatenator("I Love"," Scala"))
 
   // Syntax Sugars
   /*
@@ -44,16 +44,16 @@ object FunctionalProgramming extends  App {
    */
 
   val function_name_syn_sugars = (v1: String, v2: String) => v1 < v2      // composing functions as syntax sugars
-  println(function_name_syn_sugars("One", "Two"))
+  print(function_name_syn_sugars("One", "Two"))
 
 // Higher Order Functions - which take functions as agrs or returns functions or both
   //  1. map in List type is a Higher Order function
   val modifList = List(1,2,3).map(valueIncrementer)  // same as List(1,2,3).map(x=> x+1) using syntax sugars where x=> x+1 is a anonymous function
-  println(modifList)
+  print(modifList)
 
   // 2. flatnmap
   val flatedMap = List(1,2,3).flatMap(x => List(x, 2*x)) // flat map converts ((1,2),(2,4),(3,6)) => (1,2,2,4,3,6)
-  println(flatedMap)
+  print(flatedMap)
   //alternative syntax for HOF
   /*
     val flatedMap = List(1,2,3).flatMap{x =>
@@ -65,7 +65,7 @@ object FunctionalProgramming extends  App {
   // 3. filter
   val filteredList = List(1,2,3,4,5).filter(x=> x<=3) // x=> x<3 anonymous funtions filter values  less than 3
                                         // ( _<3) shoter syntax which is same as x => x<3
-  println(filteredList)
+  print(filteredList)
 
   // in Scala as we work with immutable objects all three map,flatmap, filter return another instance of list so we can chain all these Higher order functions
   // create all the combinaitons of 1,2,3 with all letters of a,b,c using chain of all the HOF used so far
@@ -77,7 +77,7 @@ object FunctionalProgramming extends  App {
     number <- List(1,2,3)
     letter <- List('a','b','c')
   } yield s"$number - $letter"
-  println(allCombinationsV2)   // allCombinations, allCombinationsV2 expressions are identical to compiler
+  print(allCombinationsV2)   // allCombinations, allCombinationsV2 expressions are identical to compiler
 
   // Collections in Scala
   /*
@@ -96,7 +96,7 @@ object FunctionalProgramming extends  App {
   val atail = aList.tail   // tail = List(2,3)
   val aPrependList  = 0 :: aList // 0 is prepended to aList
   val appendList = 0 +: aList :+ 4 // +: will prepend to list and :+ will append to list
-  println(ahead, atail, aPrependList,appendList)
+  print(ahead, atail, aPrependList,appendList)
 
   // Sequence
   val aseq: Seq[Int] = Seq(1,2,3) // similar to Seq.apply(1,2,3) , where Seq is trait
@@ -108,19 +108,19 @@ object FunctionalProgramming extends  App {
 
   // Sets
   val aset: Set[Int] = Set(1,2,3,1,3)
-  println(aset)
-  println(aset + 4)  // adding 4 set
-  println(aset - 3)  //  removing 3 from set (+, - are methods from set)
+  print(aset)
+  print(aset + 4)  // adding 4 set
+  print(aset - 3)  //  removing 3 from set (+, - are methods from set)
 
   // Ranges
   val arange: Range = 1 to 10
-  println(arange)
+  print(arange)
   val twotimes = arange.map(_*2).toList
-  println(twotimes)
+  print(twotimes)
 
   // Tuplees
   val atuple = ("str1", aList, 100)
-  println(atuple) //  group of information is tagged to value - atuple
+  print(atuple) //  group of information is tagged to value - atuple
 
   // Map - key value association
   val amap : Map[String,Int] = Map(

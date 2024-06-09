@@ -11,23 +11,23 @@ object ObjectOrientation extends App {
   class Animal {
     var age: Int = 10
 
-    def eat(): Unit = println("I Eat anything")
+    def eat(): Unit = print("I Eat anything")
   }
 
   var dg = new Animal
-  println("1", dg.age)
-  println("2", dg.eat())
+  print("1", dg.age)
+  print("2", dg.eat())
 
   // simple inheritance
   class Dog(name: String) extends Animal { //constructor variable :name can not be accessed by object because it not a field to promote to filed use val/var
     //constructor variables(without var/val) are ephemeral which are not able to access outside the definition of class
-    def nameOfDog(): Unit = println(s"name of the dog is $name")
+    def nameOfDog(): Unit = print(s"name of the dog is $name")
   }
 
   var aDog = new Dog("lucy")
   aDog.nameOfDog()
-  println("3", aDog.age)
-  // println(aDog.name) // to access constructor variable  declare  name as var -> class Dog(var name: String) extends Animal
+  print("3", aDog.age)
+  // print(aDog.name) // to access constructor variable  declare  name as var -> class Dog(var name: String) extends Animal
   aDog.eat()
   aDog.age = 25
 
@@ -50,9 +50,9 @@ object ObjectOrientation extends App {
   class Mammal extends WalkingAnimal {
     override def walking() = {
       if (!hasLegs)
-        println(s"I walk with legs")
+        print(s"I walk with legs")
       else
-        println("I dont have legs")
+        print("I dont have legs")
     }
   }
 
@@ -71,11 +71,11 @@ object ObjectOrientation extends App {
 
   //  Scala offers single class inheritance and multi-trait( mixing ) inheritance. Trait == interface (ultimate abstraction)
   class Crocodile extends Animal with Carnivore with Philosopher {
-    override def eat(animal: Animal) = println(s"I'm eating you ${animal.age} ")
+    override def eat(animal: Animal) = print(s"I'm eating you ${animal.age} ")
     // override key is used override the medhod in base class
     override def eat(): Unit = super.eat() //override base class method
 
-    override def ?!(thought: String) = println(s"I'm thinking of $thought")
+    override def ?!(thought: String) = print(s"I'm thinking of $thought")
   }
 
   var areptile = new Crocodile
@@ -89,20 +89,20 @@ object ObjectOrientation extends App {
   //  In Scala every operator is a Method
   var temp = 10 + 20
   var temp1 = 10.+(20) // both are same + is method name 10 + 20 is infix notation, and  10.+(20) is obj.method(parameter) notation
-  println(s"5. temp= $temp, temp1=$temp1")
+  print(s"5. temp= $temp, temp1=$temp1")
 
   //  Anonymous Classes
   /* In other statically typed languages we cannot directly instantiate interface which are need to extended by a concrete class
   but in scala we define traits using anonymous class by directly override methods without a class name
   */
   var dino = new Carnivore {
-    override def eat(animal: Animal) = println(s"Dinosur here ${animal.age}")
+    override def eat(animal: Animal) = print(s"Dinosur here ${animal.age}")
   }
   dino.eat(anAnimal)
   /*
   same as above implementation for Anonymous classes
   class Dinosour_345234 extends Carnivore{
-    override def eat(animal: Animal) = println(s"Dinosur here ${animal.age}")
+    override def eat(animal: Animal) = print(s"Dinosur here ${animal.age}")
   }
   var dino = new Dinosour_345234;
   */
@@ -112,14 +112,14 @@ object ObjectOrientation extends App {
   object MySingleTon { // only instance of MysingleTon type with variables and methods
     var age: Int = 25
 
-    def message(msg: String): Unit = println(s"Message is $msg")
+    def message(msg: String): Unit = print(s"Message is $msg")
 
     def apply(x: Int): Int = x + 1 //presence of apply method in singleton object or any classes, they can be invoked as methods directly -> refer invoking of apply() below
   }
 
-  println(MySingleTon.age)
+  print(MySingleTon.age)
   MySingleTon.message("HI")
-  println(MySingleTon(97), MySingleTon.apply(97)) // my default singleton object will invoke apply function
+  print(MySingleTon(97), MySingleTon.apply(97)) // my default singleton object will invoke apply function
 
   //  companion objects
   object Animal { //class Animal and object Animal are companions
@@ -130,7 +130,7 @@ object ObjectOrientation extends App {
   }
 
   var animalCanLiveIndifinatey = Animal.canLiveIndefinately // similar to accessing static feilds/methods in java/cpp
-  println(animalCanLiveIndifinatey)
+  print(animalCanLiveIndifinatey)
 
   /*
   case classes - Light Weight Data structures with some boiler plate
@@ -142,10 +142,10 @@ object ObjectOrientation extends App {
 
   var bob = new Person("Bob", 35) // person can be instansiated without new keyword also
   //  person.apply("Bob", 35) case classes will have companion objects (like apply method)
-  println(bob.age, bob.name)
+  print(bob.age, bob.name)
 
   def check_caseClass(cls_id : Person): Unit= {  //for case class we can access constructor variables with class object directly
-    println(cls_id.name, cls_id.age)
+    print(cls_id.name, cls_id.age)
   }
 
   //  exceptions
@@ -156,7 +156,7 @@ object ObjectOrientation extends App {
     // code that can throw
     val x: String = null
     val y:Int  = x.length  // accessing the feild length on null object throws an exception
-    println(s"length of string is $y")
+    print(s"length of string is $y")
   }
   catch { // in Java: catch(Exception e) {...}
     case e: Exception => s"some faulty error message $e"
@@ -174,11 +174,11 @@ object ObjectOrientation extends App {
   }
   // use generic with concrete type
   var li:List[Int] = List(1,2,3)   // list with Int type
-  println(li.head)
-  println(li.tail)
+  print(li.head)
+  print(li.tail)
   var st_li :List[String] = List("Alice","Bob","Charlie") // List with string elements
-  println(st_li.length,st_li.last)
-  println(st_li.head,st_li.tail)
+  print(st_li.length,st_li.last)
+  print(st_li.head,st_li.tail)
 
 
   /*
