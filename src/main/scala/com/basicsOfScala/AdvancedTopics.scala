@@ -1,4 +1,4 @@
-package basicsOfScala
+package com.basicsOfScala
 
 import java.lang.Thread
 import scala.concurrent.ExecutionContext.Implicits.global  // global is thread pool in scala to run threads

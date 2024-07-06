@@ -1,4 +1,4 @@
-package basicsOfScala
+package com.basicsOfScala
 
 object PatternMatching extends App {
 

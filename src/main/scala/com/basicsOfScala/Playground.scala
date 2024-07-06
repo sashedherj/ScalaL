@@ -1,4 +1,4 @@
-package basicsOfScala
+package com.basicsOfScala
 
 /**
  * This simple application is an invitation to you to play around with any Scala code you like!
