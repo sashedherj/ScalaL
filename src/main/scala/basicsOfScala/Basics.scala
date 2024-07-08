@@ -1,4 +1,4 @@
-package com.basicsOfScala
+package basicsOfScala
 
 object Basics  extends App { //extends to app to make code runnable as standalone
   //every thing in scala are expressions

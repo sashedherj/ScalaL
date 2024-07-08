@@ -1,4 +1,4 @@
-package com.basicsOfScala
+package basicsOfScala
 
 object ObjectOrientation extends App {
 
