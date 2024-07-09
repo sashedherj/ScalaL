@@ -19,7 +19,7 @@ object MethodNotations extends App {
   val mary = new Person("Mary", "Inception")
   println(mary.likes("Inception"))
   println(mary likes "Inception") // equivalent
-  // infix notation = operator notation (syntactic sugar)
+  // infix notation = operator notation (syntactic sugar)  - only valid for methods with single parameter
 
   // "operators" in Scala
   val tom = new Person("Tom", "Fight Club")
@@ -40,14 +40,14 @@ object MethodNotations extends App {
   println(!mary)
   println(mary.unary_!)
 
-  // postfix notation
+  // postfix notation - only available with methods without parameters
   println(mary.isAlive)
   println(mary isAlive) // only available with the scala.language.postfixOps import - discouraged
 
   // apply
   println(mary.apply())
-  println(mary()) // equivalent
-
+  println(mary()) // equivalent - when object is invoked as functions it invokes the apply method in that class
+                  // this breaks the barrier b/w functional programming vs oops, as object is invoked as function due to special method apply() in the class
   /*
     1.  Overload the + operator
         mary + "the rockstar" => new person "Mary (the rockstar)"

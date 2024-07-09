@@ -17,7 +17,7 @@ object OOBasics extends App {
     // overloading
     def greet(): Unit = println(s"Hi, I am $name")
 
-    // multiple constructors
+    // multiple constructors - constructor overloading
     def this(name: String) = this(name, 0)
     def this() = this("John Doe")
   }
@@ -37,7 +37,7 @@ object OOBasics extends App {
   val counter = new Counter
   counter.inc.print
   counter.inc.inc.inc.print
-  counter.inc(10000).print
+  counter.inc(10).print
 }
 
 /*
@@ -52,7 +52,7 @@ object OOBasics extends App {
   - copy (new year of release) = new instance of Novel
  */
 class Writer(firstName: String, surname: String, val year: Int) {
-  def fullName: String = firstName + " " + surname
+  def fullName: String = firstName + " " + surname                  // functions without parameters doesn't require ()
 }
 
 class Novel(name: String, year: Int, author: Writer) {
@@ -71,7 +71,7 @@ class Novel(name: String, year: Int, author: Writer) {
 class Counter(val count: Int = 0) {
   def inc = {
     println("incrementing")
-    new Counter(count + 1)  // immutability
+    new Counter(count + 1)  // immutability - every time calling inc() or dec()  returns a new similar class instance
   }
 
   def dec = {
@@ -81,7 +81,7 @@ class Counter(val count: Int = 0) {
 
   def inc(n: Int): Counter = {
     if (n <= 0) this
-    else inc.inc(n-1)
+    else inc.inc(n-1)              // try replacing inc.inc(n-1) to this.inc(n-1) -> inc will never happen  as inc() is never invoked
   }
 
   def dec(n: Int): Counter =
