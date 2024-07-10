@@ -2,7 +2,7 @@ package udemy_scala_for_beginers.lectures.part2oop
 
 object Inheritance extends App {
 
-  // single class inheritance
+  // single class inheritance - scala supports single class inheritance like other langs
   sealed class Animal {
     val creatureType = "wild"
     def eat = println("nomnom")
@@ -23,7 +23,7 @@ object Inheritance extends App {
   class Person(name: String, age: Int) {
     def this(name: String) = this(name, 0)
   }
-  class Adult(name: String, age: Int, idCard: String) extends Person(name)
+  class Adult(name: String, age: Int, idCard: String) extends Person(name) // when super class has the constructor it should be extended with constructor parameter intialization
 
   // overriding
   class Dog(override val creatureType: String) extends Animal {
@@ -40,7 +40,7 @@ object Inheritance extends App {
 
   // type substitution (broad: polymorphism)
   val unknownAnimal: Animal = new Dog("K9")
-  unknownAnimal.eat
+  unknownAnimal.eat       // will invoke the most derived implementation of animal class
 
   // overRIDING vs overLOADING
 
