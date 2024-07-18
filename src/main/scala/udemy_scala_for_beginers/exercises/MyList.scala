@@ -41,7 +41,7 @@ abstract class MyList[+A] {
   }
 }
 
-case object Empty extends MyList[Nothing] {
+case object Empty extends MyList[Nothing] {    //objects can extend class with all appropriate classes
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
