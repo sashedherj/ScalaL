@@ -41,11 +41,12 @@ abstract class MyList[+A] {
   }
 }
 
-case object Empty extends MyList[Nothing] {    //objects can extend class with all appropriate classes
+//objects can extend class with all appropriate classes
+case object Empty extends MyList[Nothing] {       //[nothing can be proper substitute of any type]
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
-  def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
+  def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)    // B should be super class of nothing which is always  for any proper data type
   def printElements: String = ""
 
   def map[B](transformer: Nothing => B): MyList[B] = Empty

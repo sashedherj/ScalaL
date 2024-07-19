@@ -6,7 +6,7 @@ object AnonymousClasses extends App {
     def eat: Unit
   }
 
-  // anonymous class
+  // funnyAnimal is anonymous class
   val funnyAnimal: Animal = new Animal {
     override def eat: Unit = println("ahahahahahaah")
   }
