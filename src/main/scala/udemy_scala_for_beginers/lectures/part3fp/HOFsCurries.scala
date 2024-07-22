@@ -1,4 +1,4 @@
-package lectures.part3fp
+package udemy_scala_for_beginers.lectures.part3fp
 
 object HOFsCurries extends App {
 
@@ -25,7 +25,7 @@ object HOFsCurries extends App {
     if (n <= 0) (x: Int) => x
     else (x: Int) => nTimesBetter(f, n-1)(f(x))
 
-  val plus10 = nTimesBetter(plusOne, 100000)
+  val plus10 = nTimesBetter(plusOne, 10)
   println(plus10(1))
 
   // curried functions

@@ -1,8 +1,8 @@
-package lectures.part3fp
+package udemy_scala_for_beginers.lectures.part3fp
 
 object MapFlatmapFilterFor extends App {
 
-  val list = List(1,2,3)
+  val list = List(1,2,3) // calling apply method on list companion object
   println(list.head)
   println(list.tail)
 
@@ -22,7 +22,8 @@ object MapFlatmapFilterFor extends App {
   val chars = List('a','b','c','d')
   val colors = List("black", "white")
 
-  // List("a1", "a2"... "d4")
+  // List("a1", "a2"... "d4")  using 2 loops it will be easy but using functional programming a bit diffcult
+  // usr this trick - use flat map for all the loops except the inner most loop use map i.e, for final map use map 
 
   // "iterating"
   val combinations = numbers.filter(_ % 2 == 0).flatMap(n => chars.flatMap(c => colors.map(color => "" + c + n + "-" + color)))
@@ -38,7 +39,7 @@ object MapFlatmapFilterFor extends App {
     c <- chars
     color <- colors
   } yield "" + c + n + "-" + color
-  println(forCombinations)
+  println(forCombinations)   // forCombination and Combinations are similar in results
 
   for {
     n <- numbers

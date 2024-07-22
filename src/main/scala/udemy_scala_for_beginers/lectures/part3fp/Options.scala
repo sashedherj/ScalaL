@@ -1,4 +1,4 @@
-package lectures.part3fp
+package udemy_scala_for_beginers.lectures.part3fp
 
 import java.util.Random
 

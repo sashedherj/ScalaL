@@ -1,4 +1,4 @@
-package exercises
+package udemy_scala_for_beginers.exercises
 
 abstract class MyList[+A] {
 
@@ -162,7 +162,7 @@ object ListTest extends App {
 
   println(cloneListOfIntegers == listOfIntegers)
 
-  listOfIntegers.foreach(println)
+  listOfIntegers.foreach(x => println(x)) // similar to => listOfIntegers.foreach(println)
   println(listOfIntegers.sort((x, y) => y - x))
   println(anotherListOfIntegers.zipWith[String, String](listOfStrings, _ + "-" + _))
   println(listOfIntegers.fold(0)(_ + _))

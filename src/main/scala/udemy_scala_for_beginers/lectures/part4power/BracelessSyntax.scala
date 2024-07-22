@@ -1,4 +1,4 @@
-package lectures.part4power
+package udemy_scala_for_beginers.lectures.part4power
 
 object BracelessSyntax {
 

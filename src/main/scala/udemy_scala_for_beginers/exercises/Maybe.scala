@@ -1,4 +1,4 @@
-package exercises
+package udemy_scala_for_beginers.exercises
 
 /**
   * Created by Daniel.
