@@ -26,7 +26,7 @@ abstract class MyList[+A] {
   // concatenation
   def ++[B >: A](list: MyList[B]): MyList[B]
 
-  // hofs
+  // hofs - Higher order functions either. Receive functions as parameters or return other functions as a result.
   def foreach(f: A => Unit): Unit
   def sort(compare: (A, A) => Int): MyList[A]
   def zipWith[B, C](list: MyList[B], zip:(A, B) => C): MyList[C]

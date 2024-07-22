@@ -34,10 +34,10 @@ object HOFsCurries extends App {
   println(add3(10))
   println(superAdder(3)(10))
 
-  // functions with multiple parameter lists
+  // functions with multiple parameter lists are allowed, will act like curried functions
   def curriedFormatter(c: String)(x: Double): String = c.format(x)
 
-  val standardFormat: (Double => String) = curriedFormatter("%4.2f")
+  val standardFormat: (Double => String) = curriedFormatter("%4.2f") // smaller functions will not compile if type is missing in defination for functions with multiple parameter lists
   val preciseFormat: (Double => String) = curriedFormatter("%10.8f")
 
   println(standardFormat(Math.PI))

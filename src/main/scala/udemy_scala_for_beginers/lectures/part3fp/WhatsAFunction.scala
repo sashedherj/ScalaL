@@ -2,23 +2,23 @@ package lectures.part3fp
 
 object WhatsAFunction extends App {
 
-  // DREAM: use functions as first class elements
-  // problem: oop
+  // objective: use functions as first class elements
+  // problem: oops, in oops every this is object
 
   val doubler = new MyFunction[Int, Int] {
     override def apply(element: Int): Int = element * 2
   }
 
-  println(doubler(2))
+  println(doubler(2)) // actually doubler is instance of MyFunction class but this invocation looks like a function
 
   // function types = Function1[A, B]
-  val stringToIntConverter = new Function1[String, Int] {
+  val stringToIntConverter = new Function1[String, Int] {  // by default, Scala supports these function types up to 22 parameters.
     override def apply(string: String): Int = string.toInt
   }
 
   println(stringToIntConverter("3") + 4)
 
-  val adder: ((Int, Int) => Int) = new Function2[Int, Int, Int] {
+  val adder: ((Int, Int) => Int) = new Function2[Int, Int, Int] {   // ((Int, Int) => Int) syntactic sugar for function2
     override def apply(a: Int, b: Int): Int = a + b
   }
 

@@ -10,11 +10,11 @@ object Exceptions extends App {
   //  val aWeirdValue: String = throw new NullPointerException // also crashes
 
   // throwable classes extend the Throwable class.
-  // Exception and Error are the major Throwable subtypes
+  // Exception and Error are the major Throwable subtypes both crashes the jvm
 
   // 2. how to catch exceptions
   def getInt(withExceptions: Boolean): Int =
-    if (withExceptions) throw new RuntimeException("No int for you!")
+    if (withExceptions) throw new RuntimeException("No int for you!")  // exceptions come from java not a scala specific thing
     else 42
 
   val potentialFail = try {
@@ -32,7 +32,7 @@ object Exceptions extends App {
 
   println(potentialFail)
 
-  // 3. how to define your own exceptions
+  // 3. how to define your own exceptions needs to extend the Exception class
   class MyException extends Exception
   val exception = new MyException
 
@@ -52,10 +52,10 @@ object Exceptions extends App {
           - UnderflowException if subtract(x,y) exceeds Int.MIN_VALUE
           - MathCalculationException for division by 0
    */
-  //  OOM
+  //  OOM - OutOfMemoryError
   //  val array = Array.ofDim(Int.MaxValue)
 
-  //  SO
+  //  SO - StachOverFlowError
   //  def infinite: Int = 1 + infinite
   //  val noLimit = infinite
 
@@ -67,15 +67,15 @@ object Exceptions extends App {
     def add(x: Int, y: Int) = {
       val result = x + y
 
-      if (x > 0 && y > 0 && result < 0) throw new OverflowException
-      else if (x < 0 && y < 0 && result > 0) throw new UnderflowException
+      if (x > 0 && y > 0 && result < 0) throw new OverflowException //add 2 +ve num and result is -ve overflow happens
+      else if (x < 0 && y < 0 && result > 0) throw new UnderflowException //add 2 -ve num and result is +ve underflow happens
       else result
     }
 
     def subtract(x: Int, y: Int) = {
       val result = x - y
-      if (x > 0 && y < 0 && result < 0) throw new OverflowException
-      else if (x < 0 && y > 0 && result > 0) throw new UnderflowException
+      if (x > 0 && y < 0 && result < 0) throw new OverflowException   //add 2 +ve num and result is -ve overflow happens
+      else if (x < 0 && y > 0 && result > 0) throw new UnderflowException //add 2 -ve num and result is +ve underflow happens
       else result
     }
 

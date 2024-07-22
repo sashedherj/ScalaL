@@ -1,6 +1,6 @@
 package udemy_scala_for_beginers.lectures.part2oop
 
-import playground.{PrinceCharming, Cinderella => Princess}
+import playground.{PrinceCharming, Cinderella => Princess}   //   import Cinderella alias Princess
 
 import java.util.Date
 import java.sql.{Date => SqlDate}
@@ -11,9 +11,9 @@ object PackagingAndImports extends App {
   val writer = new Writer("Daniel", "RockTheJVM", 2018)
 
   // import the package
-  val princess = new Princess  // Cinderella = fully qualified name
+  val princess = new Princess  // Cinderella = fully qualified name members in code doesn't require import statements
 
-  // packages are in hierarchy
+  // packages are ordered hierarchy
   // matching folder structure.
 
   // package object
