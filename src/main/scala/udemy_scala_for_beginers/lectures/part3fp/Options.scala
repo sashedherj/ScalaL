@@ -4,6 +4,7 @@ import java.util.Random
 
 object Options extends App {
 
+  // options- possible absence of a value, used to avoid nullPointerExceptions
   val myFirstOption: Option[Int] = Some(4)
   val noOption: Option[Int] = None
 
@@ -11,26 +12,26 @@ object Options extends App {
 
   // WORK with unsafe APIs
   def unsafeMethod(): String = null
-  //  val result = Some(null) // WRONG
-  val result = Option(unsafeMethod()) // Some or None
+  //  val result = Some(null) // WRONG- i.e, will always expects some value
+  val result = Option(unsafeMethod()) // Some or None, based on the return value from unsafeMethod(), Option will assign some or none to result
   println(result)
 
   // chained methods
   def backupMethod(): String = "A valid result"
-  val chainedResult = Option(unsafeMethod()).orElse(Option(backupMethod()))
+  val chainedResult = Option(unsafeMethod()).orElse(Option(backupMethod())) // if unsafeMethod return None then backup method will return gaurented result
 
   // DESIGN unsafe APIs
   def betterUnsafeMethod(): Option[String] = None
   def betterBackupMethod(): Option[String] = Some("A valid result")
-  val betterChainedResult = betterUnsafeMethod() orElse betterBackupMethod()
+  val betterChainedResult = betterUnsafeMethod() orElse betterBackupMethod() // if api returns options then we don't need to handle this results
 
   // functions on Options
-  println(myFirstOption.isEmpty)
-  println(myFirstOption.get)  // USAFE - DO NOT USE THIS
+  println(myFirstOption.isEmpty) // returns true of false based on some and none for the given option
+  println(myFirstOption.get)  // USAFE - DO NOT USE THIS, if myFirstOption is NULL we'll get null pointer exception
 
   // map, flatMap, filter
   println(myFirstOption.map(_ * 2))
-  println(myFirstOption.filter(x => x > 10))
+  println(myFirstOption.filter(x => x > 10))  // if true returns same SOME(value) else return NONE
   println(myFirstOption.flatMap(x => Option(x * 10)))
 
   // for-comprehensions
@@ -71,9 +72,9 @@ object Options extends App {
       return c.connect
     return null
    */
-  val connectionStatus = connection.map(c => c.connect)
+  val connectionStatus = connection.map(c => c.connect) // returns an Option[String]
   // if (connectionStatus == null) println(None) else print (Some(connectionstatus.get))
-  println(connectionStatus)
+  println(connectionStatus)  // o/p is undetermined depends in random.nextBoolean()
   /*
     if (status != null)
       println(status)

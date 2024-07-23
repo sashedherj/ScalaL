@@ -5,7 +5,7 @@ import scala.util.Random
 object Sequences extends App {
 
   // Seq
-  val aSequence = Seq(1,3,2,4)
+  val aSequence = Seq(1,3,2,4)  // so compananion object has apply factory method  that can build subclasses
   println(aSequence)
   println(aSequence.reverse)
   println(aSequence(2))
@@ -20,10 +20,10 @@ object Sequences extends App {
 
   // lists
   val aList = List(1,2,3)
-  val prepended = 42 +: aList :+ 89
+  val prepended = 42 +: aList :+ 89    // 42 :: alist  syntactic sugar for apply method in aList
   println(prepended)
 
-  val apples5 = List.fill(5)("apple")
+  val apples5 = List.fill(5)("apple")  // fill is a curried function construct a list with string- apple 5x
   println(apples5)
   println(aList.mkString("-|-"))
 
@@ -33,11 +33,11 @@ object Sequences extends App {
   threeElements.foreach(println)
 
   // mutation
-  numbers(2) = 0  // syntax sugar for numbers.update(2, 0)
+  numbers(2) = 0  // syntax sugar for numbers.update(2, 0), update is also a special method like apply and available in mutable collections
   println(numbers.mkString(" "))
 
   // arrays and seq
-  val numbersSeq: Seq[Int] = numbers  // implicit conversion
+  val numbersSeq: Seq[Int] = numbers  // implicit conversion - numbers array is WrappedArray in sequence
   println(numbersSeq)
 
   // vectors
@@ -65,11 +65,16 @@ object Sequences extends App {
   val numbersList = (1 to maxCapacity).toList
   val numbersVector = (1 to maxCapacity).toVector
 
-  // keeps reference to tail
-  // updating an element in the middle takes long
+  /*  -> List
+      pro - keeps reference to tail
+      con - updating an element in the middle takes long as entire reference to the tail need to modified
+   */
   println(getWriteTime(numbersList))
-  // depth of the tree is small
-  // needs to replace an entire 32-element chunk
+  
+  /*  -> Vector
+      pro -  depth of the tree is small
+      con -  needs to replace an entire 32-element chunk - takes less time compared to List as it is effective constant indexed trie O(log32(n))
+   */
   println(getWriteTime(numbersVector))
 
 }

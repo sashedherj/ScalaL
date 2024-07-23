@@ -9,6 +9,7 @@ object TuplesAndMaps extends App {
 
   // tuples = finite ordered "lists"
   val aTuple = (2, "hello, Scala")  // Tuple2[Int, String] = (Int, String)
+  // tuples can group atmost 22 different elements as they used in conjuction with FunctionsX
 
   println(aTuple._1)  // 2
   println(aTuple.copy(_2 = "goodbye Java"))
@@ -17,7 +18,7 @@ object TuplesAndMaps extends App {
   // Maps - keys -> values
   val aMap: Map[String, Int] = Map()
 
-  val phonebook = Map(("Jim", 555), "Daniel" -> 789, ("JIM", 9000)).withDefaultValue(-1)
+  val phonebook = Map(("Jim", 555), "Daniel" -> 789, ("JIM", 9000)).withDefaultValue(-1) // we can populate maps with tuples/parings
   // a -> b is sugar for (a, b)
   println(phonebook)
 
@@ -27,21 +28,21 @@ object TuplesAndMaps extends App {
 
   // add a pairing
   val newPairing = "Mary" -> 678
-  val newPhonebook = phonebook + newPairing
+  val newPhonebook = phonebook + newPairing // + will add new pairing to map
   println(newPhonebook)
 
   // functionals on maps
-  // map, flatMap, filter
+  // map, flatMap, filter => will accept pairings
   //  println(phonebook.map(pair => pair._1.toLowerCase -> pair._2))
 
   // filterKeys
-  //  println(phonebook.view.filterKeys(x => x.startsWith("J")).toMap)
-  // mapValues
+    println(phonebook.view.filterKeys(x => x.startsWith("J")).toMap)
+  // mapValues -> We often use filterKeys and mapValues on maps.
   println(phonebook.view.mapValues(number => "0245-" + number).toMap)
 
   // conversions to other collections
   println(phonebook.toList)
-  //  println(List(("Daniel", 555)).toMap)
+  println(List(("Daniel", 555)).toMap) // conversion of pairings to map 
   val names = List("Bob", "James", "Angela", "Mary", "Daniel", "Jim")
   println(names.groupBy(name => name.charAt(0)))
   println(names.groupBy(name => name.charAt(0) == 'J'))
@@ -110,12 +111,12 @@ object TuplesAndMaps extends App {
   println(nFriends(testNet, "Bob"))
 
   def mostFriends(network: Map[String, Set[String]]): String =
-    network.maxBy(pair => pair._2.size)._1
+    network.maxBy(pair => pair._2.size)._1   // maxBy returns the pairing and _1 gives key of that pair
 
   println(mostFriends(testNet))
 
   def nPeopleWithNoFriends(network: Map[String, Set[String]]): Int =
-    network.count(_._2.isEmpty)
+    network.count(pair => pair._2.isEmpty)  // network.filter(pair => pair._2.isEmpty).size, filter-size is replaced by count function
 
   println(nPeopleWithNoFriends(testNet))
 

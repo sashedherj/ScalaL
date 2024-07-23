@@ -19,20 +19,26 @@ object PatternMatching extends App {
   println(description)
 
   // 1. Decompose values
+
+  /*
+      The first very interesting property of pattern matching is that it can decompose values, especially
+      used in conjunction with case classes. Case classes have the ability to be deconstructed
+       or extracted in pattern matching.
+   */
   case class Person(name: String, age: Int)
   val bob = Person("Bob", 20)
 
   val greeting = bob match {
-    case Person(n, a) if a < 21 => s"Hi, my name is $n and I can't drink in the US"
-    case Person(n, a) => s"Hi, my name is $n and I am $a years old"
+    case Person(n, a) if a < 21 => s"Hi, my name is $n and I can't drink in the US"   // can have gaurd for case statement
+    case Person(n, a) => s"Hi, my name is $n and I am $a years old" // extracted name $n and $a age from bob by decomposing the object bob
     case _ => "I don't know who I am"
   }
   println(greeting)
 
   /*
     1. cases are matched in order
-    2. what if no cases match? MatchError
-    3. type of the PM expressoion? unified type of all the types in all the cases
+    2. what if no cases match?  throws - MatchError so use wildcard match pattern '_'
+    3. type of the PM expression? unified type of all the types in all the cases,  So the compiler will try to unify the types for you and return the lowest common ancestor of all the types returned by all the cases.
     4. PM works really well with case classes*
    */
 
@@ -42,7 +48,7 @@ object PatternMatching extends App {
   case class Parrot(greeting: String) extends Animal
 
   val animal: Animal = Dog("Terra Nova")
-  animal match {
+  animal match {    /// throws error because Animal is sealed class, match need to exhaustive to match all the possible matches
     case Dog(someBreed) => println(s"Matched a dog of the $someBreed breed")
   }
 

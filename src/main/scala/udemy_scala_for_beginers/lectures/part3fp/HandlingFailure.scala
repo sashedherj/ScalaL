@@ -14,7 +14,7 @@ object HandlingFailure extends App {
   def unsafeMethod(): String = throw new RuntimeException("NO STRING FOR YOU BUSTER")
 
   // Try objects via the apply method
-  val potentialFailure = Try(unsafeMethod())
+  val potentialFailure = Try(unsafeMethod())   // Try will wrap it up to failure when an exception is returned from unsafeMethod()
   println(potentialFailure)
 
   // syntax sugar
@@ -34,7 +34,9 @@ object HandlingFailure extends App {
   def betterUnsafeMethod(): Try[String] = Failure(new RuntimeException)
   def betterBackupMethod(): Try[String] = Success("A valid result")
   val betterFallback = betterUnsafeMethod() orElse betterBackupMethod()
-
+  /*
+  whenever our code returns null use options, if it throws  exceptions use Try
+   */
   // map, flatMap, filter
   println(aSuccess.map(_ * 2))
   println(aSuccess.flatMap(x => Success(x * 10)))
@@ -66,6 +68,7 @@ object HandlingFailure extends App {
       else throw new RuntimeException("Someone else took the port")
 
     def getSafeConnection(host: String, port: String): Try[Connection] = Try(getConnection(host, port))
+
   }
 
   // if you get the html page from the connection, print it to the console i.e. call renderHTML
@@ -79,8 +82,13 @@ object HandlingFailure extends App {
     .foreach(renderHTML)
 
   // for-comprehension version
+//  val forComprhension = for {
+//    connection <- HttpService.getConnection(host, port)
+//    html <- connection.getSafe("/home")
+//
+//  }  renderHTML(html)
 
-  /*
+  /*  imperative style
     try {
       connection = HttpService.getConnection(host, port)
       try {

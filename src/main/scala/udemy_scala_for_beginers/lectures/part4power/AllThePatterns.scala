@@ -28,7 +28,7 @@ object AllThePatterns extends App {
   val aTuple = (1,2)
   val matchATuple = aTuple match {
     case (1, 1) =>
-    case (something, 2) => s"I've found $something"
+    case (something, 2) => s"I've found $something"   // nested pattern matching 
   }
 
   val nestedTuple = (1, (2, 3))
@@ -48,7 +48,7 @@ object AllThePatterns extends App {
   // 5 - list patterns
   val aStandardList = List(1,2,3,42)
   val standardListMatching = aStandardList match {
-    case List(1, _, _, _) => // extractor - advanced
+    case List(1, _, _, _) => // extractor - advanced, List is not a case class still it supports PM with extractor defined in collection
     case List(1, _*) => // list of arbitrary length - advanced
     case 1 :: List(_) => // infix pattern
     case List(1,2,_) :+ 42 => "lala"// infix pattern
@@ -63,24 +63,24 @@ object AllThePatterns extends App {
 
   // 7 - name binding
   val nameBindingMatch = aList match {
-    case nonEmptyList @ Cons(_, _) => // name binding => use the name later(here)
+    case nonEmptyList @ Cons(_, _) => // name binding => use the name later(here), naming the pattern
     case Cons(1, rest @ Cons(2, _)) => // name binding inside nested patterns
   }
 
   // 8 - multi-patterns
-  val multipattern = aList match {
-    case Empty | Cons(0, _) => // compound pattern (multi-pattern)
-  }
+//  val multipattern = aList match {
+//    case Empty | Cons(0, _) => // compound pattern (multi-pattern)
+//  }
 
   // 9 - if guards
   val secondElementSpecial = aList match {
     case Cons(_, Cons(specialElement, _)) if specialElement % 2 == 0 =>
   }
 
-  val anything: Any = ???
-  anything match {
-    case _: RuntimeException | _:NullPointerException => ""
-  }
+//  val anything: Any = ???
+//  anything match {
+//    case _: RuntimeException | _:NullPointerException => ""
+//  }
 
   // ALL.
 
@@ -95,6 +95,6 @@ object AllThePatterns extends App {
     case _ => ""
   }
 
-  println(numbersMatch)
+  println(numbersMatch) // due to type erasure it matches with 1st case becase [String] will be removed while compiling in java in jvm
   // JVM trick question
 }
