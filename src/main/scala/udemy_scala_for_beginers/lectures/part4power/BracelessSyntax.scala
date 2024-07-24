@@ -2,6 +2,7 @@ package udemy_scala_for_beginers.lectures.part4power
 
 object BracelessSyntax {
 
+  // when removing {} for code blocks use significant indendation
   // if - expressions
   val anIfExpression = if (2 > 3) "bigger" else "smaller"
 
@@ -75,7 +76,7 @@ object BracelessSyntax {
     partialResult + 2 // still part of the method implementation!
 
   // class definition with significant indentation (same for traits, objects, enums etc)
-  class Animal: // compiler expects the body of Animal
+  class Animal: // compiler expects the body of Animal after ':'
     def eat(): Unit =
       println("I'm eating")
     end eat
@@ -83,7 +84,7 @@ object BracelessSyntax {
     def grow(): Unit =
       println("I'm growing")
 
-    // 3000 more lines of code
+    // 3000 more lines of code end token helps to understand compiler that class defination is completed
   end Animal // if, match, for, methods, classes, traits, enums, objects
 
   // anonymous classes

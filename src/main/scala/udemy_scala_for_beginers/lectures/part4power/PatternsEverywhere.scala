@@ -24,18 +24,17 @@ object PatternsEverywhere extends App {
     }
    */
 
-  // big idea #2
+  // big idea #2 - generators are also based on PATTERN MATCHING
   val list = List(1,2,3,4)
   val evenOnes = for {
     x <- list if x % 2 == 0 // ?!
   } yield 10 * x
 
-  // generators are also based on PATTERN MATCHING
   val tuples = List((1,2), (3,4))
   val filterTuples = for {
     (first, second) <- tuples
   } yield first * second
-  // case classes, :: operators, ...
+  // similarly try case classes, :: operators, ...
 
   // big idea #3
   val tuple = (1,2,3)
@@ -62,6 +61,6 @@ object PatternsEverywhere extends App {
       case _ => "something else"
     }
   }
-  println(mappedList)
+  println(mappedList) // mappedlist and mappedlist2 both are equivalent expressions
 
 }
